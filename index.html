@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kiểm tra số nguyên tố</title>
+</head>
+<body>
+<h2>Kiểm tra số nguyên tố</h2>
+<input type="number" id="input" oninput="check(this.value)"> <span id="result"></span>
+<p id = 'display'>Hiển thị các số nguyên tố nhỏ hơn 10000</p><br>
+<script>
+    function checkPrime(number) {
+        let isPrime = true;
+        if (number < 2) {
+            isPrime = false;
+        } else if (number === 2) {
+            isPrime = true;
+        } else {
+            for (let i = 2; i < number; i++) {
+                if (number % i === 0) {
+                    isPrime = false;
+                }
+            }
+        }
+        return isPrime;
+    }
+    // console.log(checkPrime(7));
+
+   function check(checkNumber){
+       let isPrime = checkPrime(checkNumber);
+       if(isPrime){
+           document.getElementById("result").innerHTML = "is a prime";
+       } else {
+           document.getElementById("result").innerHTML = "is not a prime";
+       }
+       console.log(isPrime);
+   }
+    // Sử dụng phương thức này để tìm tất cả các số nguyên tố nhỏ hơn 10000
+    let text = '';
+    for(let i = 0; i < 10000; i++){
+        let isPrime = checkPrime(i);
+        if(isPrime){
+            text += i + " ,";
+        }
+    }
+    console.log(text);
+    document.getElementById('display').innerHTML = "Hiển thị các số nguyên tố nhỏ hơn 10000: "+"<br>" + text;
+
+
+
+
+</script>
+
+</body>
+</html>
